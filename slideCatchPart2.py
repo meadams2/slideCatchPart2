@@ -83,9 +83,72 @@ class Game(simpleGE.Scene):
             print(f"Final Score: {self.score}")
             self.stop()
 
+class Instructions(simpleGE.Scene):
+    def __init__(self, score):
+        super().__init__()
+        self.setImage("FallScene.png")
+        
+        self.response = "Play"
+        
+        self.instructions = simpleGE.MultiLabel()
+        self.instructions.textLines = ["You are Wednesday the Black Cat.",
+                                       "Move with the left and right arrow keys",
+                                       "and catch as many leaves as you can",
+                                       "in only ten seconds",
+                                       "",
+                                       "Good Luck!"]
+        
+        self.instructions.center = (320, 240)
+        self.instructions.size = (500, 250)
+        
+        self.prevScore = score
+        self.lblScore = simpleGE.Label()
+        self.lblScore.text = f"Last score: {self.prevScore}"
+        self.lblScore.center = (320, 400)
+        
+        self.btnPlay = simpleGE.Button()
+        self.btnPlay.text = "Play (up)"
+        self.btnPlay.center = (100, 400)
+        
+        self.btnQuit = simpleGE.Button()
+        self.btnQuit.text = "Quit (down)"
+        self.btnQuit.center = (550, 400)
+        
+        self.sprites = [self.instructions,
+                        self.lblScore,
+                        self.btnQuit,
+                        self.btnPlay]
+    def process(self):
+        #buttons
+        if self.btnQuit.clicked:
+            self.response = "Quit"
+            self.stop()
+        if self.btnPlay.clicked:
+            self.response = "Play"
+            self.stop()
+        #arrow keys
+        if self.isKeyPressed(pygame.K_UP):
+            self.response = "Play"
+            self.stop()
+        if self.isKeyPressed(pygame.K_DOWN):
+            self.response = "Quit"
+            self.stop()
+                
 def main():
-    game = Game()
-    game.start()
+    
+    keepGoing = True
+    score = 0
+    while keepGoing:
+        instructions = Instructions(score)
+        instructions.start()
+        
+        if instructions.response == "Play":
+            game = Game()
+            game.start()
+            score = game.score
+        
+        else:
+            keepGoing = False
     
 if __name__ == "__main__":
     main()
