@@ -94,7 +94,7 @@ class Instructions(simpleGE.Scene):
         self.instructions.textLines = ["You are Wednesday the Black Cat.",
                                        "Move with the left and right arrow keys",
                                        "and catch as many leaves as you can",
-                                       "in only ten seconds",
+                                       "in only ten seconds.",
                                        "",
                                        "Good Luck!"]
         
