@@ -33,6 +33,7 @@ class Leaf(simpleGE.Sprite):
     def checkBounds(self):
         if self.bottom > self.screenHeight:
             self.reset()
+            
 class LblScore(simpleGE.Label):
     def __init__(self):
         super().__init__()
@@ -44,6 +45,7 @@ class LblTime(simpleGE.Label):
         super().__init__()
         self.text = "Time Left: 10"
         self.center = (500, 30)
+        
 class Game(simpleGE.Scene):
     def __init__(self):
         super().__init__()
@@ -64,7 +66,9 @@ class Game(simpleGE.Scene):
         self.lblTime = LblTime()
         
         self.sprites = [self.wednesday,
-                        self.leaves, self.lblScore, self.lblTime]
+                        self.leaves,
+                        self.lblScore,
+                        self.lblTime]
         
     
     def process(self):
@@ -72,6 +76,12 @@ class Game(simpleGE.Scene):
             if self.wednesday.collidesWith(leaf):
                 self.sndLeaf.play()
                 leaf.reset()
+                self.score += 1
+                self.lblScore.text = f"Score:{self.score}"
+        self.lblTime.text = f"Time Left: {self.timer.getTimeLeft(): .2f}"
+        if self.timer.getTimeLeft() < 0:
+            print(f"Final Score: {self.score}")
+            self.stop()
 
 def main():
     game = Game()
