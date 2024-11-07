@@ -83,7 +83,9 @@ Initialize a while loop with sentry variable "keepGoing". keepGoing gets true. S
 
 ## Game Design Documents
 
-![State System Game Design]("C:\Users\adams\OneDrive - Ball State University\2024-2025\Fall 2024\CS120_IntroProgramming\Basic Versions\slideCatchPart2\GamePlan.png")
+![State System](https://github.com/meadams2/slideCatchPart2/blob/main/InstructionsPlan.png)
+
+![Game Design](https://github.com/meadams2/slideCatchPart2/blob/main/GamePlan.png)
 
 
 
