@@ -81,6 +81,11 @@ In Instructions class process method, define behavior of quit. If quit is clicke
 
 Initialize a while loop with sentry variable "keepGoing". keepGoing gets true. Score starts at 0. Display instructions and start instructions. If instruction response is "Play", play the game. Score gets "game.score". Otherwise, keepGoing gets False. 
 
+## Game Design Documents
+
+![State System Game Design]("C:\Users\adams\OneDrive - Ball State University\2024-2025\Fall 2024\CS120_IntroProgramming\Basic Versions\slideCatchPart2\GamePlan.png")
+
+
 
 
 
